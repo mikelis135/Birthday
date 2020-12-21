@@ -13,9 +13,9 @@ interface MainRepository {
 
     suspend fun saveBirthdays(
         birthdayResponse: List<Birthday>,
-        birthdayLiveData: (birthday: LiveData<Birthday>) -> Unit
+        birthdayLiveData: (birthday: LiveData<List<Birthday>>) -> Unit
     )
 
-    fun getLocalBirthdays(): LiveData<Birthday>
+    fun getLocalBirthdays(): LiveData<List<Birthday>>
 
 }

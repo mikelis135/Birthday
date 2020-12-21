@@ -13,7 +13,7 @@ class DefaultMainRepository @Inject constructor(
     private val birthdayLocal: BirthdayLocal
 ) : MainRepository {
 
-    private val birthdayLd: LiveData<Birthday> = birthdayLocal.getBirthday()
+    private val birthdayLd: LiveData<List<Birthday>> = birthdayLocal.getBirthday()
 
     override fun getBirthdays(
         page: Int,
@@ -32,7 +32,7 @@ class DefaultMainRepository @Inject constructor(
 
     override suspend fun saveBirthdays(
         birthdayResponse: List<Birthday>,
-        birthdayLiveData: (channelCategory: LiveData<Birthday>) -> Unit
+        birthdayLiveData: (channelCategory: LiveData<List<Birthday>>) -> Unit
     ) {
 
         coroutineScope {

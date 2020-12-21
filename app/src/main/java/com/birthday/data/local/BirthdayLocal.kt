@@ -9,6 +9,6 @@ interface BirthdayLocal {
 
     suspend fun updateBirthday(birthday: List<Birthday>)
 
-    fun getBirthday(): LiveData<Birthday>
+    fun getBirthday(): LiveData<List<Birthday>>
 
 }

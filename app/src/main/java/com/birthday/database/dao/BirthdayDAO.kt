@@ -14,6 +14,6 @@ interface BirthdayDAO {
     suspend fun updateBirthday(birthday: List<Birthday>)
 
     @Query("select * from birthdayTable")
-    fun getBirthday(): LiveData<Birthday>
+    fun getBirthday(): LiveData<List<Birthday>>
 
 }

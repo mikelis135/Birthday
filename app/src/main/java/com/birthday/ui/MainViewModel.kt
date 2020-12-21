@@ -16,9 +16,9 @@ class MainViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    var birthdayLiveDta: LiveData<Birthday> = mainRepository.getLocalBirthdays()
+    var birthdayLiveData: LiveData<List<Birthday>> = mainRepository.getLocalBirthdays()
 
-    var birthdayError: MutableLiveData<String> = MutableLiveData()
+    var errorLiveData: MutableLiveData<String> = MutableLiveData()
 
 
     init {
@@ -31,7 +31,7 @@ class MainViewModel @Inject constructor(
             mainRepository.getBirthdays(page, {
                 saveBirthdays(it, coroutineDispatcher)
             }, {
-                birthdayError.value = it
+                errorLiveData.value = it
             })
         }
     }
@@ -39,8 +39,8 @@ class MainViewModel @Inject constructor(
     private fun saveBirthdays(birthdays: List<Birthday>, coroutineDispatcher: CoroutineDispatcher) {
 
         viewModelScope.launch(coroutineDispatcher) {
-            mainRepository.saveBirthdays(birthdays) { newEpisode ->
-                birthdayLiveDta = newEpisode
+            mainRepository.saveBirthdays(birthdays) { birthday ->
+                birthdayLiveData = birthday
             }
         }
     }

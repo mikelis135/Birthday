@@ -17,6 +17,6 @@ class DefaultBirthdayLocal(
     override suspend fun updateBirthday(birthday: List<Birthday>) =
         withContext(coroutineDispatcher) { birthdayDAO.updateBirthday(birthday) }
 
-    override fun getBirthday(): LiveData<Birthday> = birthdayDAO.getBirthday()
+    override fun getBirthday(): LiveData<List<Birthday>> = birthdayDAO.getBirthday()
 
 }
