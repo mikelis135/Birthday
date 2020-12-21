@@ -26,5 +26,13 @@ App that shows a list of birthdays
 - A solid pattern to allow creating of fake classes for easy testing is implemented
 - A reactive model is used so changes react on the user interface
 
+
+## Things left to do
+
+- Adjust layout, remove tool bar to fit design
+- Add onscroll listener to recycler view to listen for when user gets to the bottom of app to fetch next page of more data, better paginated cos it'
+ll be faster and it'll increase gracefully, didn't import android paging library cos of its complexity
+- create fakes for the contracts already written and unit test them, unit test the view model and network repository too, and use espresso for the ui test
+
 ## Thank you!
 
