@@ -8,8 +8,6 @@ import com.birthday.database.dao.BirthdayDAO
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @Module
@@ -25,12 +23,6 @@ class DatabaseModule(private val context: Context) {
     @Provides
     fun providesGson(): Gson {
         return Gson()
-    }
-
-    @Singleton
-    @Provides
-    fun providesDispatcher(): CoroutineDispatcher {
-        return Dispatchers.IO
     }
 
     @Singleton

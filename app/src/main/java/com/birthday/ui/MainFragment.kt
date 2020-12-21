@@ -8,12 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.birthday.R
 import com.birthday.app.App
+import javax.inject.Inject
 
 private const val userData = "userData"
 
 class MainFragment : Fragment() {
 
     private var userData: String? = null
+
+    @Inject
+    lateinit var mainViewModel: MainViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -27,12 +31,17 @@ class MainFragment : Fragment() {
         }
     }
 
+    lateinit var rootView: View
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        mainViewModel.processBirthday()
+
+        rootView = inflater.inflate(R.layout.fragment_main, container, false)
+        return rootView
     }
 
     companion object {
