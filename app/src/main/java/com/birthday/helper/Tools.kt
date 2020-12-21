@@ -9,16 +9,6 @@ import java.util.*
 
 object Tools {
 
-    fun onFinish(activity: FragmentActivity?, fragment: Fragment) {
-        activity?.onBackPressedDispatcher?.addCallback(
-            fragment,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    activity.supportFragmentManager.popBackStack()
-                }
-            })
-    }
-
     fun toDate(
         dateString: String,
         dateFormat: String = "yyyy-MM-dd'T'HH:mm:ss",

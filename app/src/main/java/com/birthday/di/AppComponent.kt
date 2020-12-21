@@ -1,6 +1,6 @@
 package com.birthday.di
 
-import com.birthday.ui.MainFragment
+import com.birthday.ui.main.MainFragment
 import dagger.Component
 import javax.inject.Singleton
 

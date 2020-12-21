@@ -1,22 +1,25 @@
-package com.birthday.ui
+package com.birthday.ui.main
 
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.birthday.R
 import com.birthday.app.App
+import com.birthday.database.entity.Birthday
 import com.birthday.helper.CustomItemClickListener
+import com.birthday.helper.Tools
+import com.birthday.model.UserBirthday
+import com.birthday.ui.profile.ProfileFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import javax.inject.Inject
 
-private const val userData = "userData"
+const val userBirthdayKey = "userBirthday"
 
 class MainFragment : Fragment() {
 
@@ -105,8 +108,14 @@ class MainFragment : Fragment() {
         return MainAdapter(object : CustomItemClickListener {
 
             override fun <T> onItemClick(item: T, position: Int) {
-                val summary = item as String
-                Toast.makeText(requireContext(), summary, Toast.LENGTH_LONG).show()
+                val birthday = item as UserBirthday
+
+                val userBirthday = bundleOf(userBirthdayKey to birthday)
+
+                val profileFragment = ProfileFragment()
+                profileFragment.arguments = userBirthday
+
+                Tools.gotoFragment(requireActivity(), profileFragment)
             }
 
             override fun onItemLongClick(v: View, position: Int) {
